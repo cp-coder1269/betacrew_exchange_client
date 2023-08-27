@@ -39,6 +39,11 @@ class Program
 			try
 			{
 				client = new TcpClient(serverHost, serverPort);
+				while(!client.Connected){
+					Console.WriteLine("Waiting for connection...");
+					Thread.Sleep(100);
+				}
+				Console.WriteLine("Connection established...");
 				stream = client.GetStream();
 							
 				// Create a request payload for "Stream All Packets"
